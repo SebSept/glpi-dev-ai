@@ -94,10 +94,16 @@ but use the helper RuleBuilder:
         $rule = $this->createRule($rule_builder);
 ```
 
+### Assertions
+
+When creating or updating objects, no not use assetions to test object are created as expected, this is done by the createItem() & updateItem() helpers.
+This rule is not valid for fields with leading _ 
+
 ### Existing test objects
 
 When creating test data, use existing objects when possible. For example, instead of creating a new user, use `getItemByTypeName(User::class, 'tech')` to retrieve the existing "tech" user.
 Available objects can be found in `tests/src/autoload/functions.php`
+If you create a new item, justify it by adding a comment.
 
 ### Methodology
 

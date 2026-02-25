@@ -48,3 +48,7 @@ All generated code must take security concerns into account.
 ## Limitations
 
 If your answers to a question are uncertain, indicate that the user should consult an experienced GLPI developer to confirm.
+
+## Code generation
+
+- use ::class notation for classes (e.g., `User::class` not `'User'`)
