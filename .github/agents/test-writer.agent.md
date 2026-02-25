@@ -35,7 +35,7 @@ Instead, write:
 		]);
 ```
 
-À la fin d'un nouveau test que tu écris ou modifie, ajoute : 
+At the end of a new test that you write or modify, add:
 ```
 $this->markTestIncomplete('This test is ai generated, it must be reviewed/rewritten by a human.');
 ```
@@ -106,31 +106,3 @@ When writing a test following a code modification, ensure it FAILS without the f
 ### Troubleshooting
 
 If a deprecation is shown in terminal, fix the code to use the appropriate non-deprecated method. You find the correct method by reading terminal messages.
-
-## Cypress Pattern (Core only)
-
-```javascript
-describe('Feature', () => {
-    beforeEach(() => cy.login());
-
-    it('should do something', () => {
-        cy.visit('/front/computer.php');
-        cy.get('[data-testid="element"]').click();
-        cy.get('.result').should('contain', 'Expected');
-    });
-});
-```
-
-## Regression Test Pattern
-
-For bug fixes:
-1. Name describes broken scenario: `testSerialValidationOnTemplate()`
-2. Recreate exact conditions that triggered bug
-3. Assert correct behavior
-4. Test should fail if bug is reintroduced
-
-## Rules
-
-- No testing private methods
-- No mocks unless GLPI uses them
-- One test per bug/behavior
