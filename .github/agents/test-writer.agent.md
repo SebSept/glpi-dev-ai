@@ -45,6 +45,9 @@ $this->markTestIncomplete('This test is ai generated, it must be reviewed/rewrit
 Split tests into Arrange/Act/Assert sections with comment lines in format `// --- arrange ---`
 If the act section is a single line, you can leave it without a comment and write `// --- act + assert ---`.
 
+For the `arrange` section, use PHP's native `assert()` method.
+For the `assert` section, use PHPUnit methods, `$this->assertXXX()`
+
 ### Helpers
 
 Base helpers are in `tests/DbTestCase.php`.
@@ -98,8 +101,36 @@ Available objects can be found in `tests/src/autoload/functions.php`
 
 ### Methodology
 
-        // Assert
-        $this->assertTrue($result);
-    }
-}
+When writing a test following a code modification, ensure it FAILS without the fix, then PASSES once the fix is in place.
+
+### Troubleshooting
+
+If a deprecation is shown in terminal, fix the code to use the appropriate non-deprecated method. You find the correct method by reading terminal messages.
+
+## Cypress Pattern (Core only)
+
+```javascript
+describe('Feature', () => {
+    beforeEach(() => cy.login());
+
+    it('should do something', () => {
+        cy.visit('/front/computer.php');
+        cy.get('[data-testid="element"]').click();
+        cy.get('.result').should('contain', 'Expected');
+    });
+});
 ```
+
+## Regression Test Pattern
+
+For bug fixes:
+1. Name describes broken scenario: `testSerialValidationOnTemplate()`
+2. Recreate exact conditions that triggered bug
+3. Assert correct behavior
+4. Test should fail if bug is reintroduced
+
+## Rules
+
+- No testing private methods
+- No mocks unless GLPI uses them
+- One test per bug/behavior
