@@ -112,3 +112,7 @@ When writing a test following a code modification, ensure it FAILS without the f
 ### Troubleshooting
 
 If a deprecation is shown in terminal, fix the code to use the appropriate non-deprecated method. You find the correct method by reading terminal messages.
+
+### Tips / Best practices
+
+Do not use @dataProvider or other old phpunit tags, use the php attribute (e.g. #[DataProvider('dataProviderMethod')]) instead.

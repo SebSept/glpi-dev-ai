@@ -2,6 +2,7 @@
 mode: agent
 description: Écrire une note dans mon wiki
 agent: php-mentor
+tools: create_file, run_in_terminal
 ---
 
 - Écrire le fichier dans le dossier ~/Notebooks/Notes/Home/Memo/
